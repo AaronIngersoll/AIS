@@ -39,7 +39,6 @@ export default class Calls extends Component {
   render() {
     return (
       <div className="App">
-        {console.log("itworked")}
         {this.state.data.map(data => (
           <h1 className="calls_in_queue">{data.calls_in_queue}</h1>
         ))}
