@@ -19,7 +19,7 @@ export default class Timer extends Component {
     this.interval = setInterval(() => {
       this.getQueue();
       this.componentShow();
-    }, 5000);
+    }, 1000);
   }
 
   componentWillUnmount() {
