@@ -31,8 +31,9 @@ export default class Timer extends Component {
     axios
       .get(url)
       .then(response => {
+        const data = JSON.parse(response.data.body);
         this.setState({
-          data: response.data.filter(item => item.skill_name === "Inbound")
+          data: data.filter(item => item.skill_name === "Inbound")
         });
       })
       .catch(error => {

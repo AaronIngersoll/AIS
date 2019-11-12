@@ -27,8 +27,11 @@ export default class Calls extends Component {
     axios
       .get(url)
       .then(response => {
+        const data = JSON.parse(response.data.body).filter(
+          item => item.skill_name === "Inbound"
+        );
         this.setState({
-          data: response.data.filter(item => item.skill_name === "Inbound")
+          data: data
         });
       })
       .catch(error => {
@@ -39,8 +42,10 @@ export default class Calls extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.data.map(data => (
-          <h1 className="calls_in_queue">{data.calls_in_queue}</h1>
+        {this.state.data.map((data, i) => (
+          <h1 key={i} className="calls_in_queue">
+            {data.calls_in_queue}
+          </h1>
         ))}
       </div>
     );
