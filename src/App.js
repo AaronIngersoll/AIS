@@ -3,6 +3,7 @@ import Timer from "./components/timer";
 import Calls from "./components/calls";
 import Header from "./components/header";
 import Navi from "./components/navi";
+import LongestQueueTime from "./components/longestQueTime";
 
 export default class App extends Component {
   render() {
@@ -12,6 +13,7 @@ export default class App extends Component {
         <Header />
         <Calls />
         <Timer />
+        <LongestQueueTime />
       </div>
     );
   }

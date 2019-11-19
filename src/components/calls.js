@@ -1,48 +1,13 @@
 import React, { Component } from "react";
-import axios from "axios";
+import withFive9Data from "../HOC/withFive9Data";
 
-export default class Calls extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      loading: true,
-      data: []
-    };
-  }
-
-  componentDidMount() {
-    this.getQueue();
-    this.interval = setInterval(() => {
-      this.getQueue();
-    }, 1000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-  getQueue() {
-    var url = "https://aldermarketing.com/five9/queue";
-
-    axios
-      .get(url)
-      .then(response => {
-        const data = JSON.parse(response.data.body).filter(
-          item => item.skill_name === "Inbound"
-        );
-        this.setState({
-          data: data
-        });
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }
-
+class Calls extends Component {
   render() {
+    let { data } = this.props;
+    data = data || [];
     return (
       <div className="App">
-        {this.state.data.map((data, i) => (
+        {data.map((data, i) => (
           <h1 key={i} className="calls_in_queue">
             {data.calls_in_queue}
           </h1>
@@ -51,3 +16,5 @@ export default class Calls extends Component {
     );
   }
 }
+
+export default withFive9Data(Calls);
