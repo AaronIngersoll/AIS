@@ -14,7 +14,7 @@ class Timer extends Component {
     data.map(data => data.calls_in_queue) > 0 ? true : false;
 
   render() {
-    let { data } = this.props;
+    var data = this.props.queue_data;
     data = data || [];
     const show = this.componentShow(data);
     return (

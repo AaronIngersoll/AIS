@@ -3,7 +3,7 @@ import withFive9Data from "../HOC/withFive9Data";
 
 class Calls extends Component {
   render() {
-    let { data } = this.props;
+    var data = this.props.queue_data;
     data = data || [];
     return (
       <div className="App">
